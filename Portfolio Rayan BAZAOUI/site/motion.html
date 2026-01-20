@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Motion & Vidéo</title>
+    <link rel="stylesheet" href="siteprocss.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="lightbox-overlay">
+        <span class="close-btn">&times;</span>
+        <img id="full-image" src="#" alt="image complete">
+    </div>
+
+    <header class="hero-small">
+        <div class="container">
+            <span class="tag">Galerie</span>
+            <h1>Motion & Vidéo</h1>
+            <p class="subtitle">Captures de mes montages (DaVinci Resolve).</p>
+        </div>
+    </header>
+
+    <section class="portfolio" style="padding-top: 20px;">
+        <div class="container">
+            <div class="gallery-small">
+                
+                <div class="project-item">
+                    <div class="screenshot-container">
+                        <img src="Montage1.png" alt="Montage DaVinci">
+                    </div>
+                    <div class="info">
+                        <h3>Timeline DaVinci</h3>
+                        <p>Voici un exemple de l'interface : Au milieu, en bas, se trouve la timeline : on y voit les pistes audio en vert et les clips vidéo en bleu. En haut à gauche, on retrouve les paramètres de la vidéo tels que la qualité, l'angle, le zoom, etc. L'option "keyframe" (image clé), qui sert à accélérer ou ralentir les vidéos, se situe également en haut à gauche. Enfin, en bas à gauche, on accède aux médias, c'est-à-dire toutes les vidéos et les fichiers audio utilisés pour le montage.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="screenshot-container">
+                        <img src="Montage2.png" alt="Page fusion">
+                    </div>
+                    <div class="info">
+                        <h3>Fusion</h3>
+                        <p>Par exemple sur cette capture d'écran j'ai mis un texte qui peut changer en suivant les "edges" de la vidéo et, grâce au "Color Corrector", je peux changer la couleur du plan. Ici j'ai mis du rouge, puis j'ai rajouté un texte afin qu'il prenne les caractéristiques du Edge Detector et du Color Corrector. Ensuite, j'ai copié l'instance du texte afin de rajouter un "Drop Shadow" (ou ombre portée) qui sert à mettre des ombres sur le texte.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="screenshot-container">
+                        <img src="montage3.png" alt="Rendu final">
+                    </div>
+                    <div class="info">
+                        <h3>Colorimétrie</h3>
+                        <p>Pour réaliser cet étalonnage, j'ai créé un nouveau nœud (en haut à droite) sur lequel j'ai appliqué une Power Window circulaire. J'ai redimensionné ce cercle de manière à ce que les coins de l'image se trouvent à l'extérieur de la zone, puis j'ai inversé le masque afin d'affecter uniquement la périphérie de l'image et non le centre. Ensuite, j'ai appliqué une teinte bleu turquoise via l'onglet des couleurs primaires et ajouté un effet de "Glow" pour raviver l'éclat de la couleur. Enfin, pour le rendu final, j'ai ajusté le paramètre de contour progressif (Softness). Cela permet de créer une transition douce et naturelle, évitant ainsi une démarcation trop brutale.</p>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="screenshot-container">
+                        <img src="Montage4.png" alt="Exportation">
+                    </div>
+                    <div class="info">
+                        <h3>Exportation</h3>
+                        <p>La page d'exportation est une étape cruciale pour garantir une qualité optimale selon la plateforme de diffusion visée. Plutôt que de me limiter au préréglage TikTok par défaut, je configure mes propres paramètres pour privilégier le rendu visuel et la fluidité, quitte à obtenir un fichier plus volumineux. Je fixe ainsi la fréquence d'images à 60 fps (contre 30 par défaut) et la résolution en 1920x1080 (Full HD). Le réglage le plus déterminant reste cependant le "Rate Control", que je passe en "Constant Bitrate" avec un débit de 20 000 kb/s pour les réseaux sociaux comme TikTok ou Instagram, et de 80 000 kb/s pour YouTube afin d'assurer une qualité irréprochable.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-nav">
+        <a href="Sitepro.html" class="btn-outline">← Retour à l'accueil</a>
+    </div>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <p style="color: #666;">© 2025 - Rayan Design</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const thumbnails = document.querySelectorAll('.screenshot-container img');
+            const overlay = document.getElementById('lightbox-overlay');
+            const fullImage = document.getElementById('full-image');
+            const closeBtn = document.querySelector('.close-btn');
+    
+            
+            if(thumbnails.length === 0) {
+                console.error("Aucune image trouvée ! Vérifiez que vos images sont bien dans une div avec la classe 'screenshot-container'");
+            }
+    
+          
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    fullImage.src = this.src; 
+                    overlay.classList.add('active');
+                });
+            });
+    
+            const closeLightbox = () => {
+                overlay.classList.remove('active');
+                setTimeout(() => { fullImage.src = ""; }, 300); 
+            };
+    
+            if(closeBtn) closeBtn.addEventListener('click', closeLightbox);
+            if(overlay) overlay.addEventListener('click', (e) => {
+                if(e.target === overlay) closeLightbox();
+            });
+        });
+    </script>
+
+</body>
+</html>

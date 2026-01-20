@@ -1,0 +1,37 @@
+BAZAOUI Rayan Rapport de projet : Création du Portfolio
+
+1. Pourquoi j'ai fait ce site J'ai créé ce site parce que j'avais envie de montrer ce que je sais faire en HTML/CSS, en montage vidéo et en modélisation 3D. Je voulais regrouper tous mes projets au même endroit pour présenter mes compétences.
+
+2. Le Design Pour l'aspect visuel, je voulais quelque chose de moderne. Je suis parti sur un thème sombre (fond noir) parce que ça fait mieux ressortir les images. Pour les couleurs, j'ai utilisé du bleu cyan et du rouge pour créer du contraste sur les titres et les boutons. Pour la police d'écriture, j'ai choisi "Outfit" sur Google Fonts car je la trouvais simple à lire. J'ai aussi ajouté quelques animations CSS, comme les titres qui ont un dégradé de couleur et les images qui zooment légèrement quand on passe la souris dessus.
+
+3. La partie Technique (HTML & CSS) Le site est composé de plusieurs pages (Accueil, Motion, 3D, Web) mais elles utilisent toutes le même fichier CSS pour que le style reste le même partout. Au niveau de la mise en page, j'ai surtout utilisé "CSS Grid" et "Flexbox". C'était le plus simple pour aligner les éléments et créer des colonnes proprement. J'ai aussi fait en sorte que le site soit "Responsive" : sur ordinateur il y a deux colonnes, mais sur téléphone tout passe sur une seule colonne pour que ça reste lisible.
+
+4. Le JavaScript (Interactivité) C'est là où j'ai le plus de difficultés. Je voulais créer une "Lightbox" (quand on clique sur une image, elle s'affiche en grand sur fond noir). Au début j'ai fait un script simple, mais pour la page 3D, j'avais besoin de faire défiler plusieurs images pour un même projet. J'ai donc dû coder un système un peu plus complexe qui va chercher des images dans une liste cachée. Maintenant on peut naviguer avec des flèches.
+
+5. Les problèmes rencontrés J'ai eu plusieurs soucis pendant le développement :
+
+Problème de validation : Quand j'ai testé mon code sur le validateur W3C, j'avais plein d'erreurs parce que j'avais mis mes scripts et certains boutons après la balise de fin </html>. J'ai dû tout remettre correctement dans le <body>.
+
+Les images : J'avais oublié de mettre les attributs "alt" (description) sur mes images, ce qui n'est pas bon pour l'accessibilité. J'ai tout corrigé.
+
+Le bouton téléchargement : Sur la page 3D, mon bouton ".MAX" ne voulait pas se centrer, il restait bloqué à gauche. J'ai réussi à régler ça en le sortant de la grille et en mettant des marges automatiques.
+
+CSS : J'ai quelques avertissements dans la console à cause des textes en dégradé, mais c'est normal car c'est une technique récente, donc j'ai laissé comme ça.
+
+6. Sources
+
+Pour m'aider, j'ai utilisé ces sites :
+
+MDN Web Docs (Mozilla) : Pour vérifier comment s'écrivent les balises HTML et les propriétés CSS. https://developer.mozilla.org/fr/
+
+W3C Validator : Pour corriger mes erreurs de structure dans le code. https://validator.w3.org/
+
+Google Fonts : Pour récupérer la police Outfit. https://fonts.google.com/specimen/Outfit
+
+CSS-Tricks : Pour comprendre comment fonctionnent Grid et Flexbox.
+
+Des tutoriels sur le DOM (JavaScript) pour apprendre à sélectionner les éléments et faire la Lightbox.
+
+
+
+POUR CONTINUER OUVRIR Sitepro.html
