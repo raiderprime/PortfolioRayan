@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Modélisation 3D</title>
+    <link rel="stylesheet" href="siteprocss.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        
+        .hidden-gallery-list { display: none; }
+    </style>
+</head>
+<body>
+
+    <header class="hero-small">
+        <div class="container">
+            <span class="tag">Galerie</span>
+            <h1>Modélisation 3D</h1>
+            <p class="subtitle">Mes rendus</p>
+        </div>
+    </header>
+
+    <section class="portfolio">
+        <div class="container">
+            <div class="gallery-duo">
+                
+                <div class="project-item-wrapper">
+                    
+                    <div class="screenshot-container">
+                        <img src="requin1.png" alt="Couverture Projet 1" class="cover-trigger">
+                    </div>
+                    
+                    <div class="info">
+                        <h3>Requin sans "NURMS"</h3>
+                        <p>Voici mon premier projet en modélisation 3D ! J'ai réalisé un requin en respectant strictement la topologie en quadrilatères (4 côtés). Les images ci-dessus montrent le maillage sans lissage (NURMS) : les polygones ne sont pas arrondis, c'est la forme brute du modèle.</p>                    </div>
+
+                    <div class="hidden-gallery-list">
+                        <img src="requin1.png" alt="Couverture Projet 1">
+                        <img src="requin2.png" alt="image 2">
+                        <img src="requin3.png" alt="image 3">
+                        <img src="requin4.png" alt="image 4">
+                        </div>
+
+                </div>
+                <div class="project-item-wrapper">
+                    
+                    <div class="screenshot-container">
+                        <img src="requinnurms1.png" alt="Couverture Projet 2" class="cover-trigger">
+                    </div>
+                    
+                    <div class="info">
+                        <h3>Requin avec "NURMS"</h3>
+                        <p>Voici le résultat avec le lissage "NURMS" activé. Les polygones sont subdivisés et arrondis pour donner un aspect plus organique et fluide au requin. C'est la version finale et réaliste du modèle.</p>                    </div>
+
+                    <div class="hidden-gallery-list">
+                        <img src="requinnurms1.png" alt="Couverture Projet 2">
+                        <img src="requinnurms2.png" alt="Image 2">
+                        <img src="requinnurms3.png" alt="Image 3">
+                        <img src="requinrusenurms4.png" alt="image 4">
+                    </div>
+                   
+                </div>
+                </div>
+        </div>
+        <a href="requin01.max" download class="btn-download">
+            Télécharger le requin .MAX
+        </a>
+
+    </section>
+
+    <div class="bottom-nav">
+        <a href="Sitepro.html" class="btn-outline">← Retour à l'accueil</a>
+    </div>
+
+    <div id="lightbox-overlay">
+        <span class="close-btn">&times;</span>
+        <span class="lightbox-nav prev-btn">&#10094;</span>
+        <span class="lightbox-nav next-btn">&#10095;</span>
+        <img id="full-image" src="#" alt="Image en grand format">
+    </div>
+    <footer id="contact" class="footer">
+        <div class="container">
+            <p style="color: #666;">© 2025 - Rayan Design</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('.cover-trigger'); 
+            const overlay = document.getElementById('lightbox-overlay');
+            const fullImage = document.getElementById('full-image');
+            const closeBtn = document.querySelector('.close-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+
+            let currentAlbum = []; 
+            let currentIndex = 0;  
+
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const parentWrapper = this.closest('.project-item-wrapper');
+                    
+                    const hiddenListDiv = parentWrapper.querySelector('.hidden-gallery-list');
+                    
+                    const albumImages = hiddenListDiv.querySelectorAll('img');
+
+                    currentAlbum = [];
+                    albumImages.forEach(img => {
+                        currentAlbum.push(img.src);
+                    });
+
+                    if (currentAlbum.length === 0) {
+                        currentAlbum.push(this.src);
+                    }
+
+                    currentIndex = 0; 
+                    updateImage();
+                    overlay.classList.add('active');
+                });
+            });
+
+            
+            function updateImage() {
+                fullImage.src = currentAlbum[currentIndex];
+            }
+
+            
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % currentAlbum.length; 
+                updateImage();
+            });
+
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + currentAlbum.length) % currentAlbum.length; 
+                updateImage();
+            });
+
+            
+            const closeLightbox = () => {
+                overlay.classList.remove('active');
+                setTimeout(() => { fullImage.src = ""; }, 300);
+            };
+            closeBtn.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', (e) => { if(e.target === overlay) closeLightbox(); });
+            document.addEventListener('keydown', (e) => {
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === "ArrowRight") nextBtn.click();
+                if (e.key === "ArrowLeft") prevBtn.click();
+                if (e.key === "Escape") closeLightbox();
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+/* CONFIGURATION DE BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* S'assure que les marges n'agrandissent pas les boîtes */
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #0a0a0a; 
+    color: #ffffff;
+    line-height: 1.6;
+} 
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto; /* Centre le contenu au milieu de la page */
+    padding: 0 20px;
+}
+
+/*HEADER*/
+.hero {
+    height: 90vh; /* Prend 90% de la hauteur de l'écran */
+    display: flex; /* Active le mode flexible pour centrer le contenu */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    text-align: center;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%); /* Dégradé circulaire */
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin: 20px 0;
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tag {
+    background: #222;
+    padding: 5px 15px;
+    border-radius: 50px; /* Bords très ronds */
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid #444;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+/*BOUTONS*/
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.3s; /* Animation fluide pour le survol */
+}
+
+.btn:hover {
+    transform: scale(1.05); /* Grossit légèrement au survol */
+}
+
+/*SECTION A PROPOS */
+.about {
+    padding: 80px 0;
+    background: #111;
+}
+
+.about h2, .portfolio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.about-grid {
+    display: grid; /* Active le mode grille */
+    grid-template-columns: 1fr 1fr; /* Crée 2 colonnes de taille égale */
+    gap: 30px;
+}
+
+.card {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: #4facfe; /* Change la couleur de bordure au survol */
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+/*PORTFOLIO & PROJETS*/
+.portfolio {
+    padding: 80px 0;
+}
+
+.gallery {
+    display: grid;
+    /* Grille magique : crée autant de colonnes que possible, minimum 300px de large */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-item {
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden; /* Empêche l'image de dépasser des bords arrondis */
+}
+
+.info {
+    padding: 20px;
+}
+
+.footer {
+    padding: 80px 0;
+    text-align: center;
+    background: #000;
+    border-top: 1px solid #333;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.btn-outline:hover {
+    background: #fff;
+    color: #000;
+}
+
+/*VERSION MOBILE*/
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .about-grid { grid-template-columns: 1fr; } /* Passe en 1 seule colonne sur mobile */
+}
+
+.project-link {
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+    cursor: pointer; 
+}
+
+.project-link:hover {
+    box-shadow: 0 0 20px rgba(79, 172, 254, 0.3); /* Effet de lueur bleue */
+    transform: translateY(-5px); /* Monte légèrement */
+}
+
+/*IMAGES DANS LES CARTES*/
+.img-container {
+    background-color: #ffffff; 
+    height: 250px;             
+    display: flex; /* Sert à centrer l'image dans la boîte */           
+    justify-content: center;   
+    align-items: center;       
+    padding: 20px;             
+}
+
+.img-container img {
+    max-width: 100%;   
+    max-height: 100%;  
+    width: auto;       
+    height: auto;      
+    display: block;    
+    transition: transform 0.5s ease; 
+}
+.project-link:hover .img-container img {
+    transform: scale(1.1); /* Zoom sur l'image au survol */
+}
+
+/*GALERIE MOTION*/
+.hero-small {
+    height: 35vh;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+    margin-bottom: 40px; 
+}
+
+.gallery-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Colonnes plus larges */
+    gap: 30px; 
+}
+
+.screenshot-container {
+    height: 280px;
+    overflow: hidden;
+    background-color: #000;
+    border-bottom: 3px solid #333; 
+    border-radius: 12px 12px 0 0; 
+}
+
+.screenshot-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image remplit la case sans être déformée */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.9; 
+    cursor: zoom-in; /* Change le curseur en loupe */
+}
+
+.project-item:hover .screenshot-container img {
+    transform: scale(1.08);
+    opacity: 1;
+}
+
+.gallery-small .info {
+    padding: 25px;
+    background: #131313; 
+    border-radius: 0 0 12px 12px; 
+}
+
+.gallery-small .info h3 {
+    font-size: 1.4rem; 
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.gallery-small .info p {
+    font-size: 1rem; 
+    color: #bbb;
+    line-height: 1.5;
+}
+
+/*LIGHTBOX (ZOOM IMAGE)*/
+#lightbox-overlay {
+    position: fixed; /* Reste fixe par dessus tout le site */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fond noir transparent */
+    z-index: 1000; /* S'assure d'être au premier plan */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    
+    /* Caché par défaut */
+    opacity: 0;
+    pointer-events: none; 
+    transition: opacity 0.3s ease; 
+}
+
+#lightbox-overlay.active {
+    opacity: 1; 
+    pointer-events: initial; 
+}
+
+#full-image {
+    max-width: 90%; /* L'image ne dépasse jamais 90% de l'écran */
+    max-height: 90%; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); 
+    border-radius: 5px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #FE2C55; 
+}
+
+/*NAVIGATION BAS DE PAGE */
+.bottom-nav {
+    text-align: center; 
+    padding: 60px 0;    
+    margin-top: 20px;
+}
+
+/*PAGE 3D (2 COLONNES)*/
+.gallery-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Force 2 colonnes exactes */
+    gap: 40px; 
+}
+
+@media (max-width: 768px) {
+    .gallery-duo { grid-template-columns: 1fr; } /* 1 colonne sur mobile */
+}
+
+.gallery-duo .screenshot-container {
+    height: 350px; 
+}
+
+/*FLÈCHES DE NAVIGATION LIGHTBOX*/
+.lightbox-nav {
+    position: absolute; /* Position libre par rapport à l'écran */
+    top: 50%; /* Centré verticalement */
+    transform: translateY(-50%); /* Ajustement précis du centre */
+    font-size: 50px;
+    color: white;
+    background: rgba(0,0,0,0.5); 
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none; /* Empêche de sélectionner le texte de la flèche */
+    transition: 0.3s;
+}
+
+.lightbox-nav:hover {
+    background: #FE2C55; 
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+/* BOUTON DE TÉLÉCHARGEMENT FICHIER */
+.btn-download {
+    
+    display: block;           
+    width: fit-content;       
+    margin: 20px auto 0 auto; 
+    
+   
+    padding: 8px 20px;           
+    border: 1px solid #4facfe;   
+    color: #4facfe;              
+    text-decoration: none;       
+    border-radius: 5px;          
+    font-size: 0.9rem;          
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-download:hover {
+    background-color: #4facfe;   
+    color: #000;                 
+    transform: translateY(-2px); 
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.4); 
+}
